@@ -11,13 +11,12 @@ const addLineToResult = (name, content) => {
 
 const handleSubmit = (e) => {
   e.preventDefault();
+  
+  document.getElementById("feedbackMsg").replaceChildren();
+  
   const data = new FormData(e.target);
-  alert("okc");
-  
-  for( [key, value] of data) {
-    console.log(key, ",", value) ;
-  } 
-  
-  addLineToResult("Name", e.target.name.value);
-  addLineToResult("First name", e.target.firstname.value);
-  addLineToResult("Birth date", e.target.date.value);
+ 
+  addLineToResult("Name", data.get("name"));
+  addLineToResult("First name", data.get("firstname"));
+  addLineToResult("Birth date", data.get("date"));
+} 
