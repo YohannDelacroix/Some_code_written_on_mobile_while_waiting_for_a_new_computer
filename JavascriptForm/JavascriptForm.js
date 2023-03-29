@@ -1,22 +1,21 @@
 const addLineToResult = (name, content) => {
-
+   let feedbackNode =     document.getElementById("feedbackMsg");
+  
+   //Create the new block with datas
+   let feedbackBlock = document.createElement('div');
+  
+  
+   //Create the description block left
+   let feedbackDesc = document.createElement('h5');
+   let newDesc = document.createTextNode(`${name}`);
+   feedbackDesc.appendChild(newDesc);
+   
+   feedbackNode.appendChild(feedbackDesc);
+  
+  
+   //Create the content block right
    let feedbackMsg = document.createElement('p');
    feedbackMsg.classList.add("result");
-   let newElem = document.createTextNode(`${name} : ${content}`) 
+   let newElem = document.createTextNode(`${content}`) 
    feedbackMsg.appendChild(newElem);
-  
-  let feedbackNode =     document.getElementById("feedbackMsg");
-  feedbackNode.appendChild(feedbackMsg);
-} 
-
-const handleSubmit = (e) => {
-  e.preventDefault();
-  
-  document.getElementById("feedbackMsg").replaceChildren();
-  
-  const data = new FormData(e.target);
- 
-  addLineToResult("Name", data.get("name"));
-  addLineToResult("First name", data.get("firstname"));
-  addLineToResult("Birth date", data.get("date"));
-} 
+   feedbackNode.appendChild(feedbackMsg);
