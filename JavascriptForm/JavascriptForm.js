@@ -1,21 +1,35 @@
-const addLineToResult = (name, content) => {
-   let feedbackNode =     document.getElementById("feedbackMsg");
+      
+       //Display an error message onto screen
+       let errorMsg = document.createElement("p");
+       errorMsg.setAttribute("id", "errorMsg"+key);
+       let errorTxt = document.createTextNode(`You must fill this field`);
+       errorMsg.classList.add("errorMsg");
+       errorMsg.appendChild(errorTxt);
+       inputNode.after(errorMsg);
+      
+      
+       validation = false;
+    } 
+    else {
+      inputNode.classList.remove("errorInput");
+      
+    } 
+   } 
   
-   //Create the new block with datas
-   let feedbackBlock = document.createElement('div');
+   return validation;
+} 
+
+const handleSubmit = (e) => {
+  e.preventDefault();
   
+  document.getElementById("feedbackMsg").replaceChildren();
   
-   //Create the description block left
-   let feedbackDesc = document.createElement('h5');
-   let newDesc = document.createTextNode(`${name}`);
-   feedbackDesc.appendChild(newDesc);
-   
-   feedbackNode.appendChild(feedbackDesc);
+  const data = new FormData(e.target);
   
-  
-   //Create the content block right
-   let feedbackMsg = document.createElement('p');
-   feedbackMsg.classList.add("result");
-   let newElem = document.createTextNode(`${content}`) 
-   feedbackMsg.appendChild(newElem);
-   feedbackNode.appendChild(feedbackMsg);
+  if(validationControl(data)){
+ 
+ 	addLineToResult("Name", data.get("name"));
+  addLineToResult("First name", data.get("firstname"));
+  addLineToResult("Birth date", data.get("date"));
+  } 
+} 
