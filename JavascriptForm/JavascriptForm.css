@@ -23,3 +23,22 @@ form{
 form input{
   width: 100%;
   margin-bottom: 5px;
+ } 
+
+form label{
+  width: 100%;
+} 
+
+form button{
+  margin-top: 10px;
+ } 
+
+
+button {
+  border: none;
+  font-weight:bolder;
+  background-color: rgba(255,0,0,0.4);
+  border-radius: 15px;
+  width:50%;
+  padding: 5px 10px;
+  color: white;
